@@ -1,17 +1,39 @@
 package part1;
 
+import org.joda.time.LocalDate;
+import org.joda.time.Years;
+
 public class Student {
 	
 	
 
-	private String name, dob, age, id, username;
+	private String name, username, dob, age;
+	private int id;
+	
 
-	public Student(String name, String dob, String age, String id) {
+	public Student(String name, String dob, int id) {
 		super();
 		this.name = name;
-		this.dob = dob;
-		this.age = age;
+		this.age = getAge(dob);
 		this.id = id;
+		//this.dob = dob;
+	}
+	
+	public String getAge(String birthday){  //This method calculates Age based on given Date of Birth
+		String[] date = birthday.split("/");
+		int year = Integer.parseInt(date[2]);
+		if (year > 9999)
+			year = 1999;
+		
+		this.dob = date[0]+"/"+date[1]+"/"+Integer.toString(year);
+		
+		LocalDate dobi = new LocalDate(year, Integer.parseInt(date[1]), Integer.parseInt(date[0]));
+		LocalDate now = new LocalDate();
+		Years agep = Years.yearsBetween(dobi, now);
+		String age = agep.toString();
+		age = age.replaceAll("[^\\d.]", "");
+		return age;
+		
 	}
 
 	public String getUsername (){
@@ -41,15 +63,12 @@ public class Student {
 		return age;
 	}
 
-	public void setAge(String age) {
-		this.age = age;
-	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	

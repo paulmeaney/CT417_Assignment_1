@@ -12,10 +12,16 @@ public class StudentTest {
 	@Test
 	public void testGetUsername() {
 		String name = "Paul";
-		String age = "21";
-		Student testStudent = new Student(name, "02/08/95", age, "13245643");
+		Student testStudent = new Student(name, "02/08/1995", 13436908);
 		assertEquals("Paul21", testStudent.getUsername());
+	}
+	
+	@Test
+	public void testGetAge() {
 		
+		Student testStudent = new Student("Test", "01/01/1999", 00000000);
+		String age = "17";
+		assertEquals(age, testStudent.getAge());
 	}
 
 }

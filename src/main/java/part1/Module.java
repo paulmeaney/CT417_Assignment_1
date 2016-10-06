@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Module {
 	
 	private String name, courseid;
-	private ArrayList<Student> students;
+	public ArrayList<Student> students = new ArrayList<Student>();
 	
 	public Module(String name, String courseid) {
 		super();
@@ -35,15 +35,17 @@ public class Module {
 		
 	}
 	
-	public String[] listStudents(){ //Note wont work as it will return a string representation of student objects
-		
-		String output, list[];
-		output = students.toString();
-		list = output.split(",");
-		
-		return list;
-	
+	public Student getStudent(int index){
+		return students.get(index);
 	}
+	
+	public int getClassSize(){
+		return students.size();
+	}
+	
+
+	
+	
 	
 	
 }
