@@ -22,7 +22,7 @@ public class Student {
 	public String getAge(String birthday){  //This method calculates Age based on given Date of Birth
 		String[] date = birthday.split("/");
 		int year = Integer.parseInt(date[2]);
-		if (year > 9999)
+		if (year > 9999)						//This is just a default year if a 5 digit year is generated; incompatible with LocalDate
 			year = 1999;
 		
 		this.dob = date[0]+"/"+date[1]+"/"+Integer.toString(year);
@@ -31,12 +31,12 @@ public class Student {
 		LocalDate now = new LocalDate();
 		Years agep = Years.yearsBetween(dobi, now);
 		String age = agep.toString();
-		age = age.replaceAll("[^\\d.]", "");
+		age = age.replaceAll("[^\\d.]", "");  //removes all Letters from the string
 		return age;
 		
 	}
 
-	public String getUsername (){
+	public String getUsername (){ //Method to generate username for the user
 		String uname;
 		uname = name + age;
 		this.username = uname;
